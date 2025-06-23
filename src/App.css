@@ -31,14 +31,14 @@ body {
 }
 #container {
   display: flex;
-  margin-bottom: 10px;
-  /* justify-content: center; */
+  flex-direction: column;
 }
 
 #post-container {
   background-color: #e2e3e3;
   width: 400px;
   border-radius: 15px;
+  margin-bottom: 10px;
 }
 
 #time {
@@ -54,4 +54,11 @@ body {
 
 #post-description {
   margin: 12px;
+}
+
+button {
+  font-size: 1.2rem;
+  padding: 5px;
+  border: 2px solid rgb(111, 96, 96);
+  border-radius: 10px;
 }
