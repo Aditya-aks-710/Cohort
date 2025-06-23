@@ -1,0 +1,57 @@
+#post-header {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+#post-header {
+  margin: 10px;
+}
+
+#profile-pic{
+  margin-right: 10px;
+}
+
+#profile-pic img{
+  width: 45px;
+}
+body {
+  background-color: #b2bec3;
+}
+
+#profile-data div {
+  font-size: 0.8rem;
+}
+
+#top-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#container {
+  display: flex;
+  margin-bottom: 10px;
+  /* justify-content: center; */
+}
+
+#post-container {
+  background-color: #e2e3e3;
+  width: 400px;
+  border-radius: 15px;
+}
+
+#time {
+  display: flex;
+  align-items: center;
+}
+
+#time img {
+  margin-left: 5px;
+  width: 12px;
+
+}
+
+#post-description {
+  margin: 12px;
+}
