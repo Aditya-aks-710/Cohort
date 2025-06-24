@@ -10,13 +10,22 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(function() {
+    const controller = new AbortController();
+    
     setLoading(true);
-    fetch("https://jsonplaceholder.typicode.com/todos/" + currentTab)
+    fetch("https://jsonplaceholder.typicode.com/todos/" + currentTab, {
+      signal: controller.signal,
+    })
       .then(async res => {
         const json = await res.json();
         setTabData(json);
         setLoading(false);
       })
+
+      return () => {
+        controller.abort();
+      };
+
   }, [currentTab]);
 
   function change(menu) {
