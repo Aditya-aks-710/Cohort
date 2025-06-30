@@ -1,59 +1,51 @@
-import { useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, NavLink, Outlet } from "react-router-dom"
-import "./App.css"
-import logo from "./assets/react.svg"
-import globe from "./assets/worldwide.png"
-import Landing from "./pages/home.jsx"
-import Class11Program from './pages/class-11.jsx'
-import Class12Program from './pages/class-12.jsx'
+import { useState, useEffect, createContext, useContext} from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
+const CounterContext = createContext();
 
 function App() {
+  const [cnt, setcnt] = useState(0);
+
   return (
-    <div className='app-container'>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Layout/>}>
-            <Route path='/' element={<Landing/>}/>
-            <Route path='/neet/class-11' element={<Class11Program/>}/>
-            <Route path='/neet/class-12' element={<Class12Program/>}/>
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <CounterContext.Provider value={{ cnt, setcnt }}>
+      <Display/>
+      <Increase/>
+      <Decrease/>
+    </CounterContext.Provider>
   )
 }
 
-function Layout(){
-  return (
-    <div className='layout'>
-      <Header/>
-      <div className='content'>
-        <Outlet/>
-      </div>
-      <Footer/>
-    </div>
-  ) 
-}
+function Increase(){
+  const { cnt, setcnt } = useContext(CounterContext);
 
+  function increase(){
+    setcnt(cnt+1);
+  }
 
-function Header() {
   return (
-    <div className='navbar'>
-      <NavLink to='/' end className={({isActive}) => isActive ? 'active-link' : ''}>Allen</NavLink>
-      <NavLink to='/neet/class-11' className={({isActive}) => isActive ? 'active-link' : ''}>Class-11</NavLink>
-      <NavLink to='/neet/class-12' className={({isActive}) => isActive ? 'active-link' : ''}>Class-12</NavLink>
-    </div>
+    <button onClick={increase}>Increase</button>
   )
 }
 
-function Footer(){
+function Decrease(){
+  const { cnt, setcnt } = useContext(CounterContext);
+
+  function decrease(){
+    setcnt(cnt-1);
+  }
+
   return (
-    <div className='footer'>
-      Made with love and lots of pressure
-    </div>
+    <button onClick={decrease}>Decrease</button>
   )
 }
 
+function Display(){
+  const { cnt } = useContext(CounterContext);
+  return (
+    <div>{cnt}</div>
+  )
+}
 
 export default App
