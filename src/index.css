@@ -1,6 +1,8 @@
-#root {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+body{
+    background-color: #CAD3C8;
+}
+html, body, #root{
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
